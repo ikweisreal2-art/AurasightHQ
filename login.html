@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraSightHQ | Operator Access</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <header>
+            <h1 class="auth-logo">AuraSight<span class="highlight">HQ</span></h1>
+            <p class="auth-subtitle">SECURE OPERATOR LOGIN</p>
+        </header>
+
+        <div class="auth-card">
+            <div class="input-group">
+                <label>OPERATOR EMAIL</label>
+                <input type="email" id="email" placeholder="name@aurasighthq.com">
+            </div>
+
+            <div class="input-group">
+                <label>SECURITY PASSCODE</label>
+                <input type="password" id="password" placeholder="••••••••">
+            </div>
+
+            <div id="loader" style="display:none;" class="loading-text">AUTHENTICATING...</div>
+
+            <button id="login-btn" class="btn-auth">INITIALIZE ACCESS</button>
+            
+            <div class="auth-footer">
+                <p>New Operator? <a href="signup.html">Apply for 7-Day Trial</a></p>
+            </div>
+        </div>
+
+        <div class="security-seal">
+            <span class="pulse-dot"></span>
+            <span>ENCRYPTED CONNECTION ACTIVE</span>
+        </div>
+    </div>
+
+    <script type="module" src="login.js"></script>
+</body>
+</html>

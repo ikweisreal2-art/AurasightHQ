@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraSightHQ | Command Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <header class="dash-header">
+            <div class="logo">AuraSight<span class="highlight">HQ</span></div>
+            <div class="ai-status">
+                <span class="pulse-dot"></span>
+                <span>AI Engine: <span class="active-text">ACTIVE SCANNING</span></span>
+            </div>
+            <button id="logout-btn" class="btn-sm">Terminate Session</button>
+        </header>
+
+        <main class="dash-grid">
+            <aside class="dash-sidebar">
+                <div class="user-info">
+                    <p id="tier-badge">LEVEL: LOADING...</p>
+                    <p id="user-display">Operator: ...</p>
+                </div>
+
+                <div class="dispatch-zone">
+                    <button id="emergency-btn" class="btn-danger">REQUEST EMERGENCY DISPATCH</button>
+                    <p class="small-note">Priority: High-Level Secure Response</p>
+                </div>
+
+                <div class="terminal-container">
+                    <h3>AI SYSTEM LOGS</h3>
+                    <div id="log-entries" class="terminal-box">
+                        <p>> [INIT] AuraSightHQ v5.0 Secure Login Successful...</p>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="video-hub">
+                <div class="hardware-sync">
+                    <input type="text" id="camera-url" placeholder="Paste Secure Stream URL...">
+                    <button id="add-camera-btn">Add AI Feed</button>
+                </div>
+
+                <div id="camera-grid" class="camera-grid-layout">
+                    <div class="no-feeds">No Active Feeds Connected.</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="dashboard.js"></script>
+</body>
+</html>
