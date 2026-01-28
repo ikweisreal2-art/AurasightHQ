@@ -1,22 +1,17 @@
-// AuraSightHQ Neural Database Connection v5.0
+// AuraSightHQ Core Firebase Module
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, doc, onSnapshot, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// REPLACE THE DATA BELOW WITH YOUR PROJECT SETTINGS FROM FIREBASE CONSOLE
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyBXWNn-iyP4M2eNmzHbTfBtiMJhciIbpWE",
+    authDomain: "aurasighthq-178af.firebaseapp.com",
+    projectId: "aurasighthq-178af",
+    storageBucket: "aurasighthq-178af.firebasestorage.app",
+    messagingSenderId: "726147910104",
+    appId: "1:726147910104:web:b21a096ba4173d4cb78aad"
 };
 
-// Initialize the AuraSightHQ Core
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-// Exporting tools for the Dashboard and Login files to use
-export { auth, db, doc, onSnapshot, updateDoc, arrayUnion };
+export const auth = getAuth(app);
+export const db = getFirestore(app);

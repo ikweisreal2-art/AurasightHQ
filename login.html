@@ -3,40 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraSightHQ | Operator Access</title>
+    <title>AuraSightHQ | Operator Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="auth-page">
+<body>
     <div class="auth-container">
-        <header>
-            <h1 class="auth-logo">AuraSight<span class="highlight">HQ</span></h1>
-            <p class="auth-subtitle">SECURE OPERATOR LOGIN</p>
-        </header>
+        <h1>AuraSightHQ</h1>
+        <p>SECURE OPERATOR LOGIN</p>
+        <p style="font-size: 0.8rem; color: #8892b0;">Enter credentials to access Active Intelligence logs.</p>
 
-        <div class="auth-card">
-            <div class="input-group">
-                <label>OPERATOR EMAIL</label>
-                <input type="email" id="email" placeholder="name@aurasighthq.com">
-            </div>
-
-            <div class="input-group">
-                <label>SECURITY PASSCODE</label>
-                <input type="password" id="password" placeholder="••••••••">
-            </div>
-
-            <div id="loader" style="display:none;" class="loading-text">AUTHENTICATING...</div>
-
-            <button id="login-btn" class="btn-auth">INITIALIZE ACCESS</button>
+        <form id="login-form">
+            <label>OPERATOR EMAIL</label>
+            <input type="email" id="login-email" placeholder="name@email.com" required>
             
-            <div class="auth-footer">
-                <p>New Operator? <a href="signup.html">Apply for 7-Day Trial</a></p>
-            </div>
-        </div>
+            <label>PASSCODE</label>
+            <input type="password" id="login-password" placeholder="••••••••" required>
+            
+            <button type="submit" id="login-btn">ACCESS AI CORE</button>
+        </form>
 
-        <div class="security-seal">
-            <span class="pulse-dot"></span>
-            <span>ENCRYPTED CONNECTION ACTIVE</span>
-        </div>
+        <p style="margin-top: 20px; font-size: 0.9rem;">
+            New operator? <a href="signup.html" style="color: #00d2ff;">Deploy Trial System</a>
+        </p>
     </div>
 
     <script type="module" src="login.js"></script>

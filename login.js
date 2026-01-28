@@ -1,38 +1,26 @@
 import { auth } from "./firebase.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// --- OPERATOR LOGIN LOGIC ---
-document.getElementById("login-btn").onclick = async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const loader = document.getElementById("loader");
+const loginForm = document.querySelector('#login-form');
 
-    if (!email || !password) {
-        alert("CRITICAL: Operator credentials missing.");
-        return;
-    }
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const email = document.querySelector('#login-email').value;
+    const password = document.querySelector('#login-password').value;
+    const btn = document.querySelector('#login-btn');
 
-    try {
-        // Show loading state for professional feel
-        if(loader) loader.style.display = "block";
-        
-        // Attempt Secure Authentication
-        await signInWithEmailAndPassword(auth, email, password);
-        
-        // Redirect to Command Center on success
-        window.location.href = "dashboard.html";
-    } catch (error) {
-        // Billion-dollar brands use professional error handling
-        if(loader) loader.style.display = "none";
-        console.error("Auth Error:", error.code);
-        
-        let message = "ACCESS DENIED: Internal Authentication Error.";
-        if (error.code === 'auth/invalid-credential') {
-            message = "ACCESS DENIED: Invalid Operator Credentials.";
-        } else if (error.code === 'auth/too-many-requests') {
-            message = "SECURITY LOCK: Too many attempts. Try again later.";
-        }
-        
-        alert(message);
-    }
-};
+    btn.innerText = "VERIFYING CREDENTIALS...";
+    btn.style.opacity = "0.7";
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            console.log("Access Granted");
+            window.location.href = "dashboard.html"; // Redirects to your AI dashboard
+        })
+        .catch((error) => {
+            btn.innerText = "ACCESS AI CORE";
+            btn.style.opacity = "1";
+            alert("Access Denied: " + error.message);
+        });
+});

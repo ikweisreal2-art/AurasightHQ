@@ -1,35 +1,27 @@
-import { auth, db, doc } from "./firebase.js";
+import { auth } from "./firebase.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-document.getElementById("signup-btn").onclick = async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+const signupForm = document.querySelector('#signup-form');
 
-    if (!email || password.length < 6) {
-        alert("CRITICAL: Email required and Passcode must be at least 6 characters.");
-        return;
-    }
+signupForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevents the page from refreshing
+    
+    const email = document.querySelector('#signup-email').value;
+    const password = document.querySelector('#signup-password').value;
+    const btn = document.querySelector('#deploy-btn');
 
-    try {
-        // 1. Create the Secure Operator Account
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+    // Visual feedback for the "Billion-Dollar" brand
+    btn.innerText = "INITIALIZING CORE...";
+    btn.style.opacity = "0.7";
 
-        // 2. Initialize the Billion-Dollar Clearance (7-Day Trial)
-        // This tells the dashboard to show "7-DAY TRIAL" status
-        await setDoc(doc(db, "users", user.uid), {
-            email: email,
-            tier: "7-DAY TRIAL",
-            cameras: [], // Empty grid ready for AI ingestion
-            createdAt: new Date().toISOString()
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            console.log("AuraSight Operator Created");
+            window.location.href = "dashboard.html"; // Takes user to the active intelligence logs
+        })
+        .catch((error) => {
+            btn.innerText = "DEPLOY TRIAL SYSTEM";
+            btn.style.opacity = "1";
+            alert("Security Breach Detected: " + error.message);
         });
-
-        alert("TRIAL ACTIVATED: Welcome to AuraSightHQ.");
-        window.location.href = "dashboard.html";
-
-    } catch (error) {
-        console.error("Signup Error:", error.message);
-        alert("ACCESS DENIED: " + error.message);
-    }
-};
+});

@@ -3,36 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraSightHQ | Start 7-Day Trial</title>
+    <title>AuraSightHQ | Deploy System</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="auth-page">
+<body>
     <div class="auth-container">
-        <header>
-            <h1 class="auth-logo">AuraSight<span class="highlight">HQ</span></h1>
-            <p class="auth-subtitle">ACTIVATE 7-DAY FREE TRIAL</p>
-        </header>
+        <h1>AuraSightHQ</h1>
+        <p>ACTIVATE 7-DAY FREE TRIAL</p>
+        <p style="font-size: 0.8rem; color: #8892b0;">Direct access to AI Core. No credit card required.</p>
 
-        <div class="auth-card">
-            <p class="trial-note">Direct access to AI Core. No credit card required for activation.</p>
+        <form id="signup-form">
+            <label>OPERATOR EMAIL</label>
+            <input type="email" id="signup-email" placeholder="name@email.com" required>
             
-            <div class="input-group">
-                <label>OPERATOR EMAIL</label>
-                <input type="email" id="email" placeholder="name@email.com">
-            </div>
-
-            <div class="input-group">
-                <label>CREATE PASSCODE</label>
-                <input type="password" id="password" placeholder="••••••••">
-            </div>
-
-            <button id="signup-btn" class="btn-auth">DEPLOY TRIAL SYSTEM</button>
+            <label>CREATE PASSCODE</label>
+            <input type="password" id="signup-password" placeholder="••••••••" required>
             
-            <div class="auth-footer">
-                <p>Already have access? <a href="login.html">Operator Login</a></p>
-            </div>
-        </div>
+            <button type="submit" id="deploy-btn">DEPLOY TRIAL SYSTEM</button>
+        </form>
+
+        <p style="margin-top: 20px; font-size: 0.9rem;">
+            Already have access? <a href="login.html" style="color: #00d2ff;">Operator Login</a>
+        </p>
     </div>
+
     <script type="module" src="signup.js"></script>
 </body>
 </html>

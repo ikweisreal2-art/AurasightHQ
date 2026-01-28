@@ -1,113 +1,89 @@
-/* AuraSightHQ Global Design System 2026 */
 :root {
-    --neon-blue: #00d2ff;
-    --neon-green: #10b981;
-    --alert-red: #ef4444;
-    --deep-black: #05070a;
-    --glass-card: rgba(255, 255, 255, 0.03);
+    --bg: #05070a;
+    --accent: #00d2ff;
+    --glass: rgba(13, 18, 28, 0.85);
+    --border: rgba(0, 210, 255, 0.2);
 }
 
 body {
+    background: var(--bg);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
     margin: 0;
-    font-family: 'Inter', -apple-system, sans-serif;
-    background-color: var(--deep-black);
-    color: #ffffff;
-    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Landing Page Structure */
-.landing-container {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+/* VIDEO BACKGROUND */
+.hero-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
-h1 {
-    font-size: 2.5rem;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
+.bg-video {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%; min-height: 100%;
+    z-index: -2;
+    object-fit: cover;
 }
 
-.highlight {
-    color: var(--neon-blue);
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 20%, var(--bg) 90%);
+    z-index: -1;
 }
 
-/* 7-Day Free Trial Banner */
-.trial-banner {
-    margin: 40px 0;
-}
-
-.btn-trial {
-    background: transparent;
-    color: var(--neon-blue);
-    border: 1px solid var(--neon-blue);
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-trial:hover {
-    background: var(--neon-blue);
-    color: var(--deep-black);
-    box-shadow: 0 0 20px var(--neon-blue);
-}
-
-/* Pricing Grid */
-.pricing-grid {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 50px;
-}
-
-.price-card {
-    background: var(--glass-card);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* GLASSMORPHISM CARDS */
+.card, .auth-container, .monitor, .log-panel {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    border-radius: 15px;
     padding: 30px;
-    width: 280px;
-    border-radius: 12px;
-    transition: transform 0.3s;
+    transition: 0.4s;
 }
 
-.price-card.featured {
-    border: 1px solid var(--neon-blue);
-    transform: scale(1.05);
+.card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
 }
 
-.price-card.enterprise {
-    border: 1px solid #f59e0b; /* Gold/Amber border */
-}
-
-/* AI Status Pulse */
-.pulse-dot {
-    height: 10px;
-    width: 10px;
-    background-color: var(--neon-green);
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 8px;
-    box-shadow: 0 0 8px var(--neon-green);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.3; }
-    100% { opacity: 1; }
-}
-
-/* Terminal Log Box */
-.terminal-box {
-    background: #000;
-    color: var(--neon-green);
-    padding: 15px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
+/* BUTTONS */
+.btn-primary, button, .card a {
+    background: var(--accent);
+    color: #000;
+    padding: 12px 25px;
     border-radius: 5px;
-    border: 1px solid #222;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
 }
+
+/* DASHBOARD SCANNING ANIMATION */
+.scan-line {
+    position: absolute;
+    width: 100%; height: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan { from { top: 0; } to { top: 100%; } }
+
+/* LOG FEED */
+.log-feed {
+    height: 400px;
+    font-family: monospace;
+    color: var(--accent);
+    overflow: hidden;
+}
+
+.log-entry { margin-bottom: 10px; border-left: 2px solid var(--accent); padding-left: 10px; }

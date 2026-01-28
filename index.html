@@ -3,54 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraSightHQ | Active Intelligence</title>
+    <title>AuraSightHQ | Beyond Monitoring</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="landing-container">
-        <header>
-            <h1>PROTECT YOUR WORLD WITH <span class="highlight">AI.</span></h1>
-            <p class="tagline">The world's first autonomous surveillance dashboard.</p>
-            <div class="trial-banner">
-                <button class="btn-trial" onclick="location.href='signup.html'">Deploy 7-Day Free Trial</button>
+    <header class="hero-container">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="aurasight-showcase.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>AuraSightHQ</h1>
+            <p class="subtitle">Beyond Monitoring. <span style="color: #00d2ff;">Active Intelligence.</span></p>
+            <div class="cta-group">
+                <a href="signup.html" class="btn-primary">Initialize AI Core</a>
+                <a href="login.html" class="btn-secondary">Operator Login</a>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <section class="pricing-grid">
-            <div class="price-card">
-                <h3>STARTER</h3>
-                <p class="price">$10<span>/mo</span></p>
-                <ul>
-                    <li>✓ 1 AI Camera Feed</li>
-                    <li>✓ 7-Day Smart Log</li>
-                </ul>
-                <button class="btn" onclick="location.href='signup.html'">Initialize</button>
-            </div>
-
-            <div class="price-card featured">
-                <h3>BUSINESS</h3>
-                <p class="price">$35<span>/mo</span></p>
-                <ul>
-                    <li>✓ 5 AI Camera Feeds</li>
-                    <li>✓ 30-Day Smart Log</li>
-                </ul>
-                <button class="btn" onclick="location.href='signup.html'">Get Started</button>
-            </div>
-
-            <div class="price-card enterprise">
-                <h3>ENTERPRISE</h3>
-                <p class="price">$90<span>/mo</span></p>
-                <ul>
-                    <li>✓ Unlimited AI Feeds</li>
-                    <li>✓ Emergency Dispatch Protocol</li>
-                </ul>
-                <button class="btn" onclick="location.href='signup.html'">Secure Enterprise</button>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2026 AuraSightHQ Global Security. All Rights Reserved.</p>
-        </footer>
-    </div>
+    <section class="pricing">
+        <div class="card">
+            <h2>Starter</h2>
+            <div class="price">$10<span>/mo</span></div>
+            <ul><li>1 AI Camera Feed</li><li>7 Day Smart Log</li></ul>
+            <a href="signup.html">Deploy Starter</a>
+        </div>
+        <div class="card featured">
+            <div class="badge">MOST DEPLOYED</div>
+            <h2>Business</h2>
+            <div class="price">$35<span>/mo</span></div>
+            <ul><li>5 AI Camera Feeds</li><li>30 Day Smart Log</li></ul>
+            <a href="signup.html">Deploy Business</a>
+        </div>
+    </section>
 </body>
 </html>
