@@ -1,4 +1,6 @@
-/* GLOBAL SETTINGS */
+/* =========================================
+   GLOBAL SETTINGS & 2026 THEME
+   ========================================= */
 :root {
     --bg: #05070a;
     --accent: #00d2ff;
@@ -6,7 +8,7 @@
     --glass: rgba(13, 18, 28, 0.85);
     --border: rgba(0, 210, 255, 0.2);
     --text-dim: #8892b0;
-    --success: #00ff88;
+    --success: #00ff88; /* High-trust green for payments */
     --danger: #ff4b2b;
 }
 
@@ -15,10 +17,13 @@ body {
     color: #fff;
     font-family: 'Space Grotesk', sans-serif;
     margin: 0;
+    padding: 0;
     overflow-x: hidden;
 }
 
-/* KINETIC VIDEO BACKGROUND */
+/* =========================================
+   KINETIC HERO & VIDEO BACKGROUND
+   ========================================= */
 .hero-container {
     position: relative;
     height: 100vh;
@@ -44,46 +49,31 @@ body {
     z-index: -1;
 }
 
-/* INTELLIGENCE TICKER (NEW) */
-.ticker-container {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 210, 255, 0.1);
-    border-top: 1px solid var(--border);
-    padding: 10px 0;
-    overflow: hidden;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
-
-.ticker-wrapper {
-    display: flex;
-    animation: ticker-scroll 40s linear infinite;
-    white-space: nowrap;
-}
-
-.ticker-item {
-    padding: 0 50px;
+.badge {
+    background: var(--accent-glow);
     color: var(--accent);
-    font-weight: bold;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border: 1px solid var(--accent);
 }
 
-@keyframes ticker-scroll {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
+.glow-text {
+    text-shadow: 0 0 20px var(--accent);
 }
 
-/* PRICING NODES & PAYMENT BUTTONS */
+/* =========================================
+   PRICING NODES & PAYMENT BUTTONS
+   ========================================= */
 .pricing-section {
     padding: 100px 20px;
     background: var(--bg);
 }
 
 .section-header { text-align: center; margin-bottom: 60px; }
-.section-header h2 { font-size: 2.5rem; letter-spacing: 2px; }
 
 .pricing-grid {
     display: grid;
@@ -99,83 +89,88 @@ body {
     padding: 40px;
     border-radius: 20px;
     text-align: center;
-    transition: 0.4s;
-    position: relative;
+    transition: 0.4s ease;
 }
 
 .price-card:hover {
     border-color: var(--success);
     transform: translateY(-10px);
-    box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
 }
 
 .price-card.featured {
     border: 2px solid var(--accent);
     transform: scale(1.05);
+    box-shadow: 0 0 40px var(--accent-glow);
 }
 
 .price { font-size: 3rem; font-weight: 700; margin: 20px 0; }
 .price span { font-size: 1rem; color: var(--text-dim); }
 
-/* BUTTONS & PAYMENTS */
+/* Buttons */
 .btn-primary, .price-btn-main {
-    background: var(--success); /* Green for Buy/Primary */
+    background: var(--success);
     color: #000;
-    padding: 15px 35px;
+    padding: 16px 35px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 800;
     display: block;
     transition: 0.3s;
-    margin-top: 20px;
     box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
 }
 
 .price-btn {
     border: 1px solid var(--accent);
     color: var(--accent);
-    padding: 12px 30px;
+    padding: 14px 30px;
     border-radius: 8px;
     text-decoration: none;
     display: block;
     margin-top: 20px;
 }
 
-.price-btn:hover {
-    background: var(--accent);
-    color: #000;
+/* =========================================
+   INTELLIGENCE TICKER (SCROLLING)
+   ========================================= */
+.ticker-container {
+    position: fixed;
+    bottom: 50px; /* Sits above footer */
+    width: 100%;
+    background: rgba(0, 210, 255, 0.1);
+    border-top: 1px solid var(--border);
+    padding: 12px 0;
+    overflow: hidden;
+    z-index: 999;
 }
 
-/* LIVE STATUS & PULSE */
-.live-status {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: var(--text-dim);
+.ticker-wrapper {
+    display: flex;
+    animation: ticker-scroll 40s linear infinite;
+    white-space: nowrap;
 }
 
-.pulse-dot {
-    height: 10px; width: 10px;
-    background-color: var(--success);
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 8px;
-    animation: pulse 1.5s infinite;
+.ticker-item {
+    padding: 0 50px;
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 0.85rem;
 }
 
-@keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+@keyframes ticker-scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
 }
 
-/* CCTV DASHBOARD MONITOR (NEW) */
+/* =========================================
+   CCTV DASHBOARD & AI OVERLAY
+   ========================================= */
 .monitor {
     position: relative;
     height: 450px;
     background: #000;
-    border: 1px solid var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 10px;
 }
 
 #ai-canvas {
@@ -199,13 +194,36 @@ body {
 
 .rec-indicator {
     position: absolute; top: 15px; left: 15px;
-    color: var(--danger); font-weight: bold; font-size: 0.75rem; z-index: 10;
+    color: var(--danger); font-weight: bold; z-index: 10;
 }
 
 .rec-indicator .dot {
-    height: 8px; width: 8px; background: var(--danger);
-    border-radius: 50%; display: inline-block; margin-right: 5px;
+    height: 10px; width: 10px; background: var(--danger);
+    border-radius: 50%; display: inline-block; margin-right: 6px;
     animation: blink 1s infinite;
 }
 
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* =========================================
+   LEGAL FOOTER
+   ========================================= */
+.main-footer {
+    text-align: center;
+    padding: 30px;
+    background: #000;
+    border-top: 1px solid var(--border);
+}
+
+.footer-links a {
+    color: var(--accent);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.8rem;
+}
+
+.legal-page {
+    padding: 50px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
