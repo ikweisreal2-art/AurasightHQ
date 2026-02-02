@@ -7,12 +7,13 @@
     --border: rgba(0, 210, 255, 0.2);
     --text-dim: #8892b0;
     --success: #00ff88;
+    --danger: #ff4b2b;
 }
 
 body {
     background: var(--bg);
     color: #fff;
-    font-family: 'Space Grotesk', sans-serif; /* High-end 2026 font */
+    font-family: 'Space Grotesk', sans-serif;
     margin: 0;
     overflow-x: hidden;
 }
@@ -43,7 +44,39 @@ body {
     z-index: -1;
 }
 
-/* PRICING NODES SECTION */
+/* INTELLIGENCE TICKER (NEW) */
+.ticker-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 210, 255, 0.1);
+    border-top: 1px solid var(--border);
+    padding: 10px 0;
+    overflow: hidden;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.ticker-wrapper {
+    display: flex;
+    animation: ticker-scroll 40s linear infinite;
+    white-space: nowrap;
+}
+
+.ticker-item {
+    padding: 0 50px;
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+@keyframes ticker-scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* PRICING NODES & PAYMENT BUTTONS */
 .pricing-section {
     padding: 100px 20px;
     background: var(--bg);
@@ -71,9 +104,9 @@ body {
 }
 
 .price-card:hover {
-    border-color: var(--accent);
+    border-color: var(--success);
     transform: translateY(-10px);
-    box-shadow: 0 0 30px var(--accent-glow);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
 }
 
 .price-card.featured {
@@ -84,19 +117,18 @@ body {
 .price { font-size: 3rem; font-weight: 700; margin: 20px 0; }
 .price span { font-size: 1rem; color: var(--text-dim); }
 
-.price-card ul { list-style: none; padding: 0; margin: 30px 0; color: var(--text-dim); }
-.price-card li { margin-bottom: 12px; }
-
-/* BUTTONS */
+/* BUTTONS & PAYMENTS */
 .btn-primary, .price-btn-main {
-    background: var(--accent);
+    background: var(--success); /* Green for Buy/Primary */
     color: #000;
     padding: 15px 35px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    display: inline-block;
+    display: block;
     transition: 0.3s;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
 }
 
 .price-btn {
@@ -105,7 +137,13 @@ body {
     padding: 12px 30px;
     border-radius: 8px;
     text-decoration: none;
-    display: inline-block;
+    display: block;
+    margin-top: 20px;
+}
+
+.price-btn:hover {
+    background: var(--accent);
+    color: #000;
 }
 
 /* LIVE STATUS & PULSE */
@@ -130,21 +168,44 @@ body {
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
 }
 
-/* AUTH & DASHBOARD (KEEPING OLD LOGIC COMPATIBLE) */
-.auth-container {
-    max-width: 400px; margin: 100px auto; padding: 40px;
-    background: var(--glass); border: 1px solid var(--border); border-radius: 20px;
+/* CCTV DASHBOARD MONITOR (NEW) */
+.monitor {
+    position: relative;
+    height: 450px;
+    background: #000;
+    border: 1px solid var(--accent);
+    overflow: hidden;
+    border-radius: 10px;
 }
 
-.monitor {
-    position: relative; height: 400px; background: #000;
-    border: 1px solid var(--accent); overflow: hidden;
+#ai-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 5;
+    pointer-events: none;
 }
 
 .scan-line {
-    position: absolute; width: 100%; height: 2px;
-    background: var(--accent); box-shadow: 0 0 15px var(--accent);
+    position: absolute;
+    width: 100%; height: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
     animation: scan 4s linear infinite;
+    z-index: 6;
 }
 
 @keyframes scan { from { top: 0; } to { top: 100%; } }
+
+.rec-indicator {
+    position: absolute; top: 15px; left: 15px;
+    color: var(--danger); font-weight: bold; font-size: 0.75rem; z-index: 10;
+}
+
+.rec-indicator .dot {
+    height: 8px; width: 8px; background: var(--danger);
+    border-radius: 50%; display: inline-block; margin-right: 5px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }

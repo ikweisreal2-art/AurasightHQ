@@ -2,37 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AuraSightHQ | AI Core Dashboard</title>
+    <title>AuraSightHQ | AI Core</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body class="dashboard-body">
     <nav class="dash-nav">
         <div class="logo">AuraSight <span style="color:#00d2ff">CORE</span></div>
-        <div class="user-info">
-            <span id="user-email"></span>
-            <button id="signout-btn">TERMINATE SESSION</button>
-        </div>
+        <div class="user-info"><span id="user-email"></span><button id="signout-btn">TERMINATE</button></div>
     </nav>
 
     <main class="dashboard-grid">
-        <div class="monitor-container">
-            <div class="monitor">
+        <div class="monitor-wrapper">
+            <div class="monitor" id="monitor-box">
                 <div class="scan-line"></div>
+                <video id="video" autoplay muted playsinline></video>
+                <canvas id="ai-canvas"></canvas>
+                
                 <div class="monitor-ui">
-                    <h3 id="ai-status">SYSTEM STATUS: IDLE</h3>
-                    <button id="start-scan">INITIALIZE DETECTION</button>
+                    <h3 id="ai-status">CORE: STANDBY</h3>
+                    <button id="start-scan">INITIALIZE NEURAL LINK</button>
                 </div>
             </div>
         </div>
         
         <aside class="log-panel">
             <h3>SECURITY LOGS</h3>
-            <div class="log-feed" id="log-container">
-                <div class="log-entry">> ENCRYPTED LINK ESTABLISHED...</div>
-            </div>
+            <div class="log-feed" id="log-container"></div>
         </aside>
     </main>
-
     <script type="module" src="dashboard.js"></script>
 </body>
 </html>

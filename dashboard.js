@@ -1,48 +1,37 @@
-import { auth } from "./firebase.js";
-import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+const canvas = document.getElementById('ai-canvas');
+const ctx = canvas.getContext('2d');
+const video = document.getElementById('video');
 
-const logContainer = document.querySelector('#log-container');
-const aiStatus = document.querySelector('#ai-status');
-const scanBtn = document.querySelector('#start-scan');
+function startAIOverlay() {
+    canvas.width = video.clientWidth;
+    canvas.height = video.clientHeight;
 
-// Security: Kick out unauthorized users
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        document.querySelector('#user-email').innerText = `OP: ${user.email}`;
-    } else {
-        window.location.href = "login.html";
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Simulating 2 detected targets
+        const time = Date.now() * 0.002;
+        drawBox(50 + Math.sin(time) * 20, 100 + Math.cos(time) * 10, 80, 120, "HUMAN_01");
+        drawBox(200 + Math.cos(time) * 30, 150 + Math.sin(time) * 5, 60, 60, "OBJECT_UNK");
+
+        requestAnimationFrame(draw);
     }
-});
-
-// AI Intelligence Log Generator
-const logMessages = [
-    "Analyzing packet headers...",
-    "Scanning perimeter network...",
-    "Neural link established...",
-    "Threat detected: Unauthorized API ping",
-    "Mitigating spoofing attempt...",
-    "Active Intelligence: 99.4% accuracy",
-    "Bypassing secure firewall layer...",
-    "Database handshake verified.",
-    "Alert: Anomalous behavior in Zone 4"
-];
-
-function addLog() {
-    const entry = document.createElement('div');
-    entry.className = 'log-entry';
-    entry.innerText = `> ${logMessages[Math.floor(Math.random() * logMessages.length)]}`;
-    logContainer.prepend(entry); // Keeps newest logs at the top
+    draw();
 }
 
-// Start AI Scanning
-scanBtn.addEventListener('click', () => {
-    aiStatus.innerText = "ACTIVE INTELLIGENCE: SCANNING";
-    aiStatus.style.color = "#00d2ff";
-    scanBtn.style.display = "none";
-    setInterval(addLog, 2000); // Adds a new AI log every 2 seconds
-});
+function drawBox(x, y, w, h, label) {
+    ctx.strokeStyle = "#00d2ff";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x, y, w, h);
+    // Draw corners
+    ctx.fillStyle = "#00d2ff";
+    ctx.fillRect(x-2, y-2, 10, 2); ctx.fillRect(x-2, y-2, 2, 10);
+    // Label
+    ctx.font = "10px monospace";
+    ctx.fillText(label, x, y - 5);
+}
 
-// Logout Logic
-document.querySelector('#signout-btn').addEventListener('click', () => {
-    signOut(auth).then(() => window.location.href = "index.html");
+document.getElementById('start-scan').addEventListener('click', () => {
+    startAIOverlay();
+    document.getElementById('ai-status').innerText = "AI CORE: ACTIVE";
 });
