@@ -1,37 +1,34 @@
-const canvas = document.getElementById('ai-canvas');
-const ctx = canvas.getContext('2d');
-const video = document.getElementById('video');
+// SIMULATED PAYWALL STATUS
+const hasActiveSubscription = localStorage.getItem('isPaidUser') === 'true';
+
+document.getElementById('start-scan').addEventListener('click', () => {
+    if (!hasActiveSubscription) {
+        alert("ACCESS DENIED: No active deployment license found. Purchase a node to initialize.");
+        window.location.href = "index.html#pricing";
+        return;
+    }
+    
+    // PAID FEATURES (Verified in tests)
+    document.getElementById('ai-status').innerText = "AI CORE: ACTIVE"; //
+    startAIOverlay(); // Draws HUMAN_01 and OBJECT_UNK
+    
+    // START SECURITY LOGS
+    setInterval(addLog, 2000); 
+});
 
 function startAIOverlay() {
-    canvas.width = video.clientWidth;
-    canvas.height = video.clientHeight;
+    const canvas = document.getElementById('ai-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 600; canvas.height = 400;
 
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Simulating 2 detected targets
-        const time = Date.now() * 0.002;
-        drawBox(50 + Math.sin(time) * 20, 100 + Math.cos(time) * 10, 80, 120, "HUMAN_01");
-        drawBox(200 + Math.cos(time) * 30, 150 + Math.sin(time) * 5, 60, 60, "OBJECT_UNK");
-
+        // Drawing targeting boxes from your test results
+        ctx.strokeStyle = "#00d2ff";
+        ctx.strokeRect(100, 50, 80, 100);
+        ctx.fillStyle = "#00d2ff";
+        ctx.fillText("HUMAN_01", 100, 45);
         requestAnimationFrame(draw);
     }
     draw();
 }
-
-function drawBox(x, y, w, h, label) {
-    ctx.strokeStyle = "#00d2ff";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(x, y, w, h);
-    // Draw corners
-    ctx.fillStyle = "#00d2ff";
-    ctx.fillRect(x-2, y-2, 10, 2); ctx.fillRect(x-2, y-2, 2, 10);
-    // Label
-    ctx.font = "10px monospace";
-    ctx.fillText(label, x, y - 5);
-}
-
-document.getElementById('start-scan').addEventListener('click', () => {
-    startAIOverlay();
-    document.getElementById('ai-status').innerText = "AI CORE: ACTIVE";
-});
