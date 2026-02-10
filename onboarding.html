@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AuraSightHQ | Tactical Onboarding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --accent: #00d2ff;
+            --glass: rgba(13, 18, 28, 0.85);
+            --border: rgba(0, 210, 255, 0.2);
+            --success: #00ff88;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: #fff;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        h1 { color: var(--accent); letter-spacing: 2px; text-transform: uppercase; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+        h2 { color: var(--success); font-size: 1.2rem; margin-top: 0; }
+        .box {
+            background: var(--glass);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .box:hover { border-color: var(--accent); }
+        ul { padding-left: 20px; color: #8892b0; }
+        li { margin-bottom: 8px; }
+        .cta-group { margin-top: 40px; display: flex; gap: 15px; }
+        .button {
+            padding: 15px 30px;
+            background: var(--success);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+        }
+        .button-alt { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+        .step-tag { font-size: 0.7rem; color: var(--accent); font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="badge">SYSTEM INITIALIZATION V2.6</div>
+    <h1>🔐 Tactical Onboarding</h1>
+
+    <div class="box">
+        <h2>What is AuraSightHQ?</h2>
+        <p>AuraSightHQ is an elite CCTV control & monitoring platform. <strong>Important:</strong> You must already own hardware (IP Camera/DVR) to utilize our AI nodes.</p>
+    </div>
+
+    <div class="box">
+        <span class="step-tag">PREREQUISITES</span>
+        <h2>✅ Requirements for Deployment</h2>
+        <ul>
+            <li>IP Camera, Laptop Webcam, or DVR/NVR CCTV system.</li>
+            <li>Stable Internet uplink.</li>
+            <li>Hardware login credentials (IP, Username, Password).</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <span class="step-tag">MOBILE & HOME</span>
+        <h2>📱 Option 1: Phone / IP Camera</h2>
+        <p>Connect your camera to Wi-Fi via its official app. Locate the <strong>IP Address</strong> and <strong>RTSP Port (usually 554)</strong> in the settings menu.</p>
+    </div>
+
+    <div class="box">
+        <span class="step-tag">OFFICE & BUSINESS</span>
+        <h2>🛠 Option 2: Professional DVR/NVR</h2>
+        <p>Enable RTSP/ONVIF in your DVR settings. AuraSightHQ will connect directly to the DVR stream to manage all connected cameras simultaneously.</p>
+    </div>
+
+    <div class="box">
+        <span class="step-tag">POST-CONNECTION</span>
+        <h2>🤖 Intelligence Activation</h2>
+        <p>Once connected, you can initialize <strong>Active Intelligence</strong> to track targets and mitigate neural bypass attempts.</p>
+    </div>
+
+    <div class="cta-group">
+        <a class="button" href="login.html">Proceed to Login</a>
+        <a class="button button-alt" href="signup.html">Create Operator Account</a>
+    </div>
+</body>
+</html>

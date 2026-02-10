@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AuraSightHQ | Core Activated</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container" style="max-width: 500px; border-color: var(--success);">
+        <div class="badge" style="color: var(--success); border-color: var(--success);">PAYMENT VERIFIED</div>
+        <h2 class="glow-text" style="color: var(--success);">AI CORE ACTIVATED</h2>
+        
+        <div class="onboarding-box" style="border-left-color: var(--success); background: rgba(0, 255, 136, 0.05);">
+            <p style="font-size: 0.9rem;"><strong>NODE STATUS:</strong> ONLINE</p>
+            <p style="font-size: 0.9rem;"><strong>NEURAL LINK:</strong> ESTABLISHED</p>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">Your deployment license is now active. You have full access to Human Detection and Tactical Logging.</p>
+        </div>
+
+        <div class="scan-line" style="position: relative; margin: 20px 0; height: 1px;"></div>
+
+        <a href="dashboard.html" class="btn-primary" onclick="enableFullAccess()">ENTER COMMAND CENTER</a>
+        
+        <p style="margin-top: 20px; font-size: 0.7rem; color: var(--text-dim);">
+            Transaction ID: #AS-{{RANDOM_HEX}}
+        </p>
+    </div>
+
+    <script>
+        function enableFullAccess() {
+            // This flag flips the paywall we built in dashboard.js
+            localStorage.setItem('isPaidUser', 'true');
+        }
+    </script>
+</body>
+</html>
